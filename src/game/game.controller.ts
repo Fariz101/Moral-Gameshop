@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, UseInterceptors, UsePipes, ValidationPipe, UseGuards, Query, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, UseInterceptors, UsePipes, ValidationPipe, UseGuards, Query, UploadedFile, Patch } from '@nestjs/common';
 import { GameService } from './game.service';
 import { CreateGameDto } from './dto/create-game.dto';
 import { UpdateGameDto } from './dto/update-game.dto';
@@ -31,7 +31,7 @@ export class GameController {
     return this.gameService.findOne(+id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @UseGuards(AuthGuard('jwt'), RoleGuard)
   @Roles('ADMIN')
   @UsePipes(new ValidationPipe)

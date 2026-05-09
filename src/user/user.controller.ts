@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, UsePipes, ValidationPipe, UseGuards, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, UsePipes, ValidationPipe, UseGuards, Query, Patch } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -32,7 +32,7 @@ export class UserController {
     return this.userService.findOne(+id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @UsePipes(new ValidationPipe)
   @UseGuards(AuthGuard('jwt'), RoleGuard)
   @Roles('ADMIN')

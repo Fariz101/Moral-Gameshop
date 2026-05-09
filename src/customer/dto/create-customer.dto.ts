@@ -2,6 +2,7 @@ import {
   IsEmail,
   IsEnum,
   IsNotEmpty,
+  IsOptional,
   IsString,
   IsStrongPassword,
 } from 'class-validator';
@@ -11,9 +12,9 @@ export class CreateCustomerDto {
   @IsString()
   username!: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  about!: string;
+  about?: string;
 
   @IsNotEmpty()
   @IsEmail()

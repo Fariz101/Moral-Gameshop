@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, UsePipes, ValidationPipe, UseGuards, Query, Request } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, UsePipes, ValidationPipe, UseGuards, Query, Request, Patch } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
@@ -30,7 +30,7 @@ export class CustomerController  {
     return this.customerService.findOne(+id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @UsePipes(new ValidationPipe)
   @UseGuards(AuthGuard('jwt'), RoleGuard)
   @Roles('ADMIN')
